@@ -42,7 +42,7 @@
     const user = result.user;
     // IdP data available using getAdditionalUserInfo(result)
     // ...
-    window.location.href="../../index.html"
+    //window.location.href="../../index.html"
   }).catch((error) => {
     // Handle Errors here.
     const errorCode = error.code;
