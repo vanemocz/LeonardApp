@@ -10,6 +10,13 @@
     padding: 8%;
 }
 
+.banner2{
+    background-image: url("../img/sura.jpg");
+    background-position: top center;
+    background-size: cover;
+    padding: 5%;
+}
+
 .botonChat{
     position: fixed;
     bottom: 20px;
@@ -50,4 +57,13 @@
     position: absolute;
     bottom: 0;
     width: 95%;
+}
+
+.textopreguntas{
+    color: #2d6df6;
+}
+
+.titulopreguntas{
+    color: #2d6df6;
+    font-weight: 700;
 }

@@ -35,7 +35,7 @@ function procesarEntradaChat(){
     textoChat.value=""
     if (escribeUsuario=="hola"){
         let listaPreguntas=preguntas.map((pregunta,index)=>`${index+1}.${pregunta}`).join("<br>")
-        mensajeChat.innerHTML+=`<p class="text-start">Hola, bienvenido <br> ${listaPreguntas}</p>`
+        mensajeChat.innerHTML+=`<p class="text-start">Selecciona la opcion que requieras <br> ${listaPreguntas}</p>`
     }else{
         let numeroPregunta=parseInt(escribeUsuario)-1
         if (numeroPregunta>=0 && numeroPregunta<preguntas.length) {
