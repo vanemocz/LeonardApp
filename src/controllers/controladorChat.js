@@ -14,6 +14,7 @@ fetch(url,peticion)
 let textoChat=document.getElementById("textoChat")
 let mensajeChat=document.getElementById("mensajeChat")
 
+
 //Mapear el arreglo de preguntas y mapear el arreglo de respuestas
 
 let preguntas=respuesta.map(function(pregunta){
@@ -24,6 +25,9 @@ let respuestas=respuesta.map(function(respuesta){
     return respuesta.respuesta
 })
 
+let listaPreguntas=preguntas.map((pregunta,index)=>`${index+1}.${pregunta}`).join("<br>")
+mensajeChat.innerHTML+=`<p class="text-start">Selecciona la opción que requieras <br> ${listaPreguntas}</p>`
+
 //Variable para contar el numero de preguntas
 
 let indicePregunta=0;
@@ -33,15 +37,14 @@ let indicePregunta=0;
 function procesarEntradaChat(){
     let escribeUsuario=textoChat.value.toLowerCase()
     textoChat.value=""
-    if (escribeUsuario=="hola"){
-        let listaPreguntas=preguntas.map((pregunta,index)=>`${index+1}.${pregunta}`).join("<br>")
-        mensajeChat.innerHTML+=`<p class="text-start">Selecciona la opcion que requieras <br> ${listaPreguntas}</p>`
-    }else{
+    if (escribeUsuario >= 1 && escribeUsuario <= 10){
         let numeroPregunta=parseInt(escribeUsuario)-1
         if (numeroPregunta>=0 && numeroPregunta<preguntas.length) {
             mensajeChat.innerHTML+=`<p class="text-start">${preguntas[numeroPregunta]}</p>`
-            mensajeChat.innerHTML+=`<p class="text-end">${respuestas[numeroPregunta]}</p>`
+            mensajeChat.innerHTML+=`<p class="text-end text-primary fw-bold">${respuestas[numeroPregunta]}</p>`
         }
+    }else {
+       mensajeChat.innerHTML+=`<p class="text-end text-primary fw-bold">Escriba una opción válida</p>`
     }
 }
 
@@ -53,6 +56,10 @@ textoChat.addEventListener("keypress",function(evento){
         evento.preventDefault()
         procesarEntradaChat()
     }
+    mensajeChat.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: 'smooth' // Esto hará que el scroll sea suave
+    });
 })
 })
 .catch(function(respuesta){
